@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/myColor">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="#ffffff"
+        android:textSize="30dp"
+        android:textStyle="bold|italic"
+        android:id="@+id/searchNameText"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <AutoCompleteTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Enter employee name here"
+        android:id="@+id/autoCompleteEmployeeName"
+        android:textColor="#ffffff"
+        android:layout_above="@+id/search"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="20dp"/>
+
+    <!--<EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ffffff"
+        android:id="@+id/name"
+        android:hint="Enter employee name here"
+        android:layout_alignBottom="@+id/nameText"
+        android:layout_alignRight="@+id/heading"
+        android:layout_alignEnd="@+id/heading" />-->
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Get employee details"
+        android:id="@+id/search"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:background="#ba3333"
+        android:layout_below="@+id/searchNameText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/search"
+        android:layout_centerHorizontal="true"
+
+        android:layout_marginTop="20dp"
+
+        android:background="@color/line"
+        android:id="@+id/linearLayout"></LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Employee Name"
+        android:id="@+id/nameText"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Employee Name"
+        android:id="@+id/employeeName"
+        android:layout_alignBottom="@+id/nameText"
+        android:layout_toRightOf="@+id/nameText"
+        android:layout_toEndOf="@+id/nameText"
+        android:layout_marginLeft="88dp"
+        android:layout_marginStart="88dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Employee Age"
+        android:id="@+id/ageText"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Employee Age"
+        android:layout_alignBottom="@+id/ageText"
+        android:layout_alignLeft="@+id/employeeName"
+        android:layout_alignStart="@+id/employeeName"
+        android:id="@+id/employeeAge" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Employee Photo"
+        android:id="@+id/photoText"
+        android:layout_marginTop="95dp"
+        android:layout_below="@+id/ageText"
+        android:layout_toLeftOf="@+id/employeeName"
+        android:layout_toStartOf="@+id/employeeName" />
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:id="@+id/photo"
+        android:background="@drawable/border_image"
+        android:padding="1dp"
+        android:layout_alignTop="@+id/photoText"
+        android:layout_alignRight="@+id/employeeAge"
+        android:layout_alignEnd="@+id/employeeAge" />
+
+
+</RelativeLayout>
