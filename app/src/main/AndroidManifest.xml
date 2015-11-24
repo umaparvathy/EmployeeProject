@@ -19,6 +19,8 @@
         </activity>
         <activity android:name=".FetchEmployeeActivity" >
         </activity>
+        <activity android:name=".ViewAllEmployeesActivity" >
+        </activity>
         <activity android:name=".FilePicker" >
         </activity>
     </application>

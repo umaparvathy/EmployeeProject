@@ -13,7 +13,7 @@ import java.io.File;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button newEmployee, fetchEmployee;
+    Button newEmployee, fetchEmployee, viewAllEmployees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,8 +22,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         newEmployee = (Button)findViewById(R.id.newEmployee);
         fetchEmployee = (Button)findViewById(R.id.fetchEmployee);
+        viewAllEmployees = (Button)findViewById(R.id.viewAllEmployees);
         newEmployee.setOnClickListener(this);
         fetchEmployee.setOnClickListener(this);
+        viewAllEmployees.setOnClickListener(this);
     }
 
     @Override
@@ -37,6 +39,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.fetchEmployee:
                 intent = new Intent(this, FetchEmployeeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.viewAllEmployees:
+                intent = new Intent(this, ViewAllEmployeesActivity.class);
                 startActivity(intent);
                 break;
         }

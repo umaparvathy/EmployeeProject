@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by venkatsr on 21/11/15.
@@ -55,20 +56,23 @@ public class SQLiteHelper extends SQLiteOpenHelper {
     }
 
     public Employee getAnEmployee(String searchEmployeeName) {
+
+        String searchEmployeesQuery = null;
+        //String searchEmployeesQuery = "select " + COL_EMPLOYEE_NAME + ", " + COL_EMPLOYEE_AGE + ", " + COL_EMPLOYEE_PHOTO + " from " + TABLE_NAME + " where " + COL_EMPLOYEE_NAME + " = '" + searchEmployeeName + "'";
+        //String searchEmployeesQuery = "select " + COL_EMPLOYEE_NAME + ", " + COL_EMPLOYEE_AGE + " from " + TABLE_NAME + " where " + COL_EMPLOYEE_NAME + " = '" + searchEmployeeName + "'";
+
+        if(searchEmployeeName == null) {
+            searchEmployeesQuery = "select " + COL_EMPLOYEE_NAME + ", " + COL_EMPLOYEE_AGE + " from " + TABLE_NAME;
+        } else {
+            searchEmployeesQuery = "select " + COL_EMPLOYEE_NAME + ", " + COL_EMPLOYEE_AGE + " from " + TABLE_NAME + " where " + COL_EMPLOYEE_NAME + " = '" + searchEmployeeName + "'";
+        }
+        Log.e("DBHelper", "Select Query: " + searchEmployeesQuery);
         Employee employee = null;
-        ArrayList<String> allEmployeeNames = new ArrayList<String>();
         database = getReadableDatabase();
         Log.e("DBHelper", "Before rawQuery");
-        //String selectProductsQuery = "select * from " + TABLE_NAME + " where " + COL_EMPLOYEE_NAME + " = '" + searchEmployeeName + "'";
-        //String selectProductsQuery = "select " + COL_EMPLOYEE_NAME + ", " + COL_EMPLOYEE_AGE + ", " + COL_EMPLOYEE_PHOTO + " from " + TABLE_NAME + " where " + COL_EMPLOYEE_NAME + " = '" + searchEmployeeName + "'";
-        String selectProductsQuery = "select " + COL_EMPLOYEE_NAME + ", " + COL_EMPLOYEE_AGE + " from " + TABLE_NAME + " where " + COL_EMPLOYEE_NAME + " = '" + searchEmployeeName + "'";
-        Log.e("DBHelper", "Select Query: " + selectProductsQuery);
-        Cursor cursor = database.rawQuery(selectProductsQuery, null);
+        Cursor cursor = database.rawQuery(searchEmployeesQuery, null);
         Log.e("DBHelper", "After rawQuery: " + cursor.getCount());
-        /*String[] columnNames = cursor.getColumnNames();
-        for(int i=0;i<columnNames.length; i++) {
-            Log.e("SQLiteHelper-Column name: ", columnNames[i]);
-        }*/
+
         if(cursor.getCount() >0 && cursor.moveToFirst()) {
             Log.e("DBHelper", "Inside if");
             do {
@@ -86,6 +90,38 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         cursor.close();
         database.close();
         return employee;
+    }
+
+    public ArrayList<Employee> getAllEmployees() {
+        ArrayList<Employee> employees = new ArrayList<Employee>();
+
+
+        String searchEmployeesQuery = "select " + COL_EMPLOYEE_NAME + ", " + COL_EMPLOYEE_AGE + " from " + TABLE_NAME;
+
+        Log.e("DBHelper", "Select Query: " + searchEmployeesQuery);
+        Employee employee = null;
+        database = getReadableDatabase();
+        Log.e("DBHelper", "Before rawQuery");
+        Cursor cursor = database.rawQuery(searchEmployeesQuery, null);
+        Log.e("DBHelper", "After rawQuery: " + cursor.getCount());
+
+        if(cursor.getCount() >0 && cursor.moveToFirst()) {
+            Log.e("DBHelper", "Inside if");
+            do {
+                Log.e("DBHelper", "Inside do-while");
+                String employeeName = cursor.getString(cursor.getColumnIndex(COL_EMPLOYEE_NAME));
+                int employeeAge = cursor.getInt(cursor.getColumnIndex(COL_EMPLOYEE_AGE));
+                employee = new Employee(employeeName, employeeAge, null);
+                employees.add(employee);
+            } while (cursor.moveToNext());
+        } else {
+            Log.w("SQLiteHelper", "No records available");
+        }
+        Log.e("DBHelper", "Done");
+        cursor.close();
+        database.close();
+        Log.e("DBHelper", "Number of employees: " + employees.size());
+        return employees;
     }
 
     public String[] getAllEmployeeNames() {
