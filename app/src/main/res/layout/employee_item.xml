@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Employee Name"
+        android:id="@+id/nameText"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Employee Name"
+        android:id="@+id/employeeName"
+        android:layout_alignBottom="@+id/nameText"
+        android:layout_toRightOf="@+id/nameText"
+        android:layout_toEndOf="@+id/nameText"
+        android:layout_marginLeft="88dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Employee Age"
+        android:id="@+id/ageText"
+        android:layout_below="@+id/nameText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Employee Age"
+        android:id="@+id/employeeAge"
+        android:layout_alignTop="@+id/ageText"
+        android:layout_alignLeft="@+id/employeeName"
+        android:layout_alignStart="@+id/employeeName"
+        android:layout_marginTop="5dp"/>
+
+</RelativeLayout>
